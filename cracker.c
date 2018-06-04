@@ -56,35 +56,39 @@ void test(){
 int main(int argc, char** argv){
     
     //Buscar la palabra dentro de un diccionario, words.txt
-    
-    FILE * fp;
-    char * line = NULL;
-    size_t len = 0;
-    ssize_t read;
-    fp = fopen("words.txt", "r");
-    if (fp == NULL)
-        exit(EXIT_FAILURE);
-    int result = 0;
-    while ((read = getline(&line, &len, fp)) != -1 && result == 0) {
-        line[read-1] = '\0';
-        if(strcmp(line, argv[1]) == 0)
-            result = 1;
-    }
-    fclose(fp);
-    if (line)
-        free(line);
-   
-    
-    char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 
-    //Fuerza bruta
-    int k = 1;
-    while(result == 0 && k < 10){
-        printf("Probando con palabras de longitud %d\n" , k);
-        result = printAllKLengthRec(alphabet, "", 26, k, argv[1]);
-        
-        ++k;
+    if(argc != 2) printf("Usage: example of a simple output -> ./cracker WORD\n");
+
+    else{
+
+        FILE * fp;
+        char * line = NULL;
+        size_t len = 0;
+        ssize_t read;
+        fp = fopen("words.txt", "r");
+        if (fp == NULL)
+            exit(EXIT_FAILURE);
+        int result = 0;
+        while ((read = getline(&line, &len, fp)) != -1 && result == 0) {
+            line[read-1] = '\0';
+            if(strcmp(line, argv[1]) == 0)
+                result = 1;
+        }
+        fclose(fp);
+        if (line)
+            free(line);
+
+        char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
+
+        //Fuerza bruta
+        int k = 1;
+        while(result == 0 && k < 10){
+            printf("Probando con palabras de longitud %d\n" , k);
+            result = printAllKLengthRec(alphabet, "", 26, k, argv[1]);
+
+            ++k;
+        }
+        //result = 1 si la encuentra
+        printf("%d\n", result);
     }
-    //result = 1 si la encuentra
-    printf("%d\n", result);
 }
