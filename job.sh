@@ -8,8 +8,8 @@ export PATH=/Soft/cuda/8.0.61/bin:$PATH
 # Asegurar que el job mantiene las variables de entorno del shell lamador
 #$ -V
 # Cambiar el nombre del job
-#$ -N deviceQuery 
+#$ -N CrackerTGA 
 # Cambiar el shell
 #$ -S /bin/bash
 
-./cracker.exe
+./cracker.exe iepale

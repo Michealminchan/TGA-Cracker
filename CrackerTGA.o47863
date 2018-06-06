@@ -1,0 +1,8 @@
+Probando con palabras de longitud 1
+Probando con palabras de longitud 2
+Probando con palabras de longitud 3
+CudaMallocs Done
+CudaMemcpy done
+call func
+ret func
+Probando con palabras de longitud 4
